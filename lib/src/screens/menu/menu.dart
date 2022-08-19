@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart' hide Title;
 
+import 'package:go_router/go_router.dart';
+
+import '../../../utils/game_router.dart';
 import '../../configuration/configuration.dart';
 import '../../widgets/game_app_bar.dart';
 import '../../widgets/game_icon_button.dart';
@@ -19,8 +22,7 @@ class MenuScreen extends StatelessWidget {
         actions: [
           GameIconButton.image(
             path: GameIcons.settings,
-            // TODO: Navigate to settings screen.
-            onPressed: () {},
+            onPressed: () => context.goNamed(SettingsScreenRoute.name),
           ),
         ],
       ),

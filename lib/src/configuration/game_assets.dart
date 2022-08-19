@@ -1,13 +1,6 @@
 /// Picked value from [GameSprites] returns the path to the game sprite asset.
 /// Proceeded by 'assets/images/' as required by Flame.
-abstract class GameSprites {
-  // Player sprite sheet
-  static const String player = 'player-sheet.png';
-  // Fly (enemy) sprite sheet
-  static const String fly = 'fly-sheet.png';
-  // Wall (obstacle) sprite
-  static const String wall = 'wall.png';
-}
+abstract class GameSprites {}
 
 /// Picked value from [GameIcons] returns the path to the game sprite asset.
 abstract class GameIcons {

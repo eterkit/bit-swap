@@ -2,5 +2,8 @@
   "@@locale": "en",
   "gameName": "Bit Swap",
   "mainMenuPlay": "PLAY",
+  "settingsMenuTitle": "Settings",
+  "settingsSound": "Sound",
+  "settingsMusic": "Music",
   "pauseMenuTitle": "Pause"
 }

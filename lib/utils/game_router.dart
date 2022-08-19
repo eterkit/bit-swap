@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
 
 import '../src/screens/menu/menu.dart';
+import '../src/screens/menu/settings/settings.dart';
 import '../src/screens/splash/splash.dart';
 
 class GameRouter {
@@ -35,6 +37,16 @@ class GameRouter {
           },
           child: const MenuScreen(),
         ),
+        routes: [
+          GoRoute(
+            path: 'settings',
+            name: SettingsScreenRoute.name,
+            pageBuilder: (context, state) => const MaterialPage(
+              fullscreenDialog: true,
+              child: SettingsScreen(),
+            ),
+          ),
+        ],
       ),
     ],
   );
@@ -48,4 +60,8 @@ abstract class SplashScreenRoute {
 
 abstract class MenuScreenRoute {
   static const name = 'menu';
+}
+
+abstract class SettingsScreenRoute {
+  static const name = 'settings';
 }

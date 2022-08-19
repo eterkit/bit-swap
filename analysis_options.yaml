@@ -28,6 +28,7 @@ analyzer:
     implicit_dynamic_type: false
     sort_pub_dependencies: false
     flutter_style_todos: false
+    directives_ordering: false
 
 linter:
   rules:

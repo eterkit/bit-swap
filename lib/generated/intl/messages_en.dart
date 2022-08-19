@@ -24,6 +24,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "gameName": MessageLookupByLibrary.simpleMessage("Bit Swap"),
         "mainMenuPlay": MessageLookupByLibrary.simpleMessage("PLAY"),
-        "pauseMenuTitle": MessageLookupByLibrary.simpleMessage("Pause")
+        "pauseMenuTitle": MessageLookupByLibrary.simpleMessage("Pause"),
+        "settingsMenuTitle": MessageLookupByLibrary.simpleMessage("Settings"),
+        "settingsMusic": MessageLookupByLibrary.simpleMessage("Music"),
+        "settingsSound": MessageLookupByLibrary.simpleMessage("Sound")
       };
 }

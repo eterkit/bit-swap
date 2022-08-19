@@ -1,6 +1,9 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -65,6 +68,36 @@ class L10n {
     return Intl.message(
       'PLAY',
       name: 'mainMenuPlay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settingsMenuTitle {
+    return Intl.message(
+      'Settings',
+      name: 'settingsMenuTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sound`
+  String get settingsSound {
+    return Intl.message(
+      'Sound',
+      name: 'settingsSound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Music`
+  String get settingsMusic {
+    return Intl.message(
+      'Music',
+      name: 'settingsMusic',
       desc: '',
       args: [],
     );
