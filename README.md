@@ -62,12 +62,3 @@ Run those commands from terminal to:
 
 * `sort_imports.sh` - automatically sort all imports and format code.
 * `intl_utils.sh` - regenerate localization files. You should call it after making changes in `.arb` files.
-
-
-## App signing :lock_with_ink_pen:
-
-### Android :robot:
-To be able to sign android production application you need to include production `keystore` and key properties files under `android` folder (contact repository owner to obtain those files - they are gitignored).
-
-### iOS :green_apple:
-TODO: No signing for now (only debug mode)

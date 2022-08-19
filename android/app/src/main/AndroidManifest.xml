@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bit_swap">
+    package="com.eterkit.bit.swap">
    <application
         android:label="bit_swap"
         android:name="${applicationName}"
