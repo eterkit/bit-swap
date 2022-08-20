@@ -9,8 +9,9 @@ import '../game.dart';
 import '../utils/constants.dart';
 
 class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
-  late SpriteComponent _playerSpriteComponent;
-  late Vector2 _initialSpawnPosition;
+  late SpriteComponent _spriteComponent;
+
+  _Direction _direction = _Direction.left;
 
   @override
   Paint get paint => super.paint..color = GameColors.charcoal;
@@ -18,13 +19,14 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    _playerSpriteComponent = SpriteComponent.fromImage(
-      gameRef.playerImage,
+    final playerImage = await gameRef.imagesLoader.load(GameSprites.player);
+    _spriteComponent = SpriteComponent.fromImage(
+      playerImage,
       size: PlayerConstants.spriteSize,
       paint: Paint()..color = GameColors.charcoal,
       anchor: Anchor.center,
     );
-    await add(_playerSpriteComponent);
+    await add(_spriteComponent);
   }
 
   @override
@@ -32,16 +34,11 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
 
   @override
   Body createBody() {
-    _initialSpawnPosition = Vector2(
-      gameRef.size.x - PlayerConstants.bodyRadius,
-      PlayerConstants.initialPositionYOffset,
-    );
-
     final shape = CircleShape()..radius = PlayerConstants.bodyRadius;
     final fixtureDefinition = FixtureDef(shape);
     final bodyDef = BodyDef(
       userData: this,
-      position: _initialSpawnPosition,
+      position: PlayerConstants.initialPosition,
       type: BodyType.dynamic,
       gravityScale: Vector2.zero(),
     );
@@ -55,26 +52,43 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
   }
 
   @override
-  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+  bool onKeyEvent(
+    RawKeyEvent event,
+    Set<LogicalKeyboardKey> keysPressed,
+  ) {
     final isSpace = keysPressed.contains(LogicalKeyboardKey.space);
-    if (isSpace) {
-      if (body.position.x < camera.gameSize.x / 2) {
-        jumpRight();
-      } else {
-        jumpLeft();
-      }
+
+    // one press is one jump. Repeats are ignored.
+    if (isSpace && !event.repeat) {
+      jump();
       return false; // eat event
     }
     return true;
   }
 
-  void jumpRight() {
-    _playerSpriteComponent.scale = Vector2(1, 1);
-    body.linearVelocity = Vector2(1, 0) * PlayerConstants.jumpForce;
-  }
+  void jump() {
+    _direction = _direction.swap();
 
-  void jumpLeft() {
-    _playerSpriteComponent.scale = Vector2(-1, 1);
-    body.linearVelocity = Vector2(-1, 0) * PlayerConstants.jumpForce;
+    body.linearVelocity = Vector2(
+      _direction.value * PlayerConstants.jumpForce,
+      0,
+    );
+  }
+}
+
+enum _Direction {
+  left(-1),
+  right(1);
+
+  const _Direction(this.value);
+  final double value;
+
+  _Direction swap() {
+    switch (this) {
+      case _Direction.left:
+        return _Direction.right;
+      case _Direction.right:
+        return _Direction.left;
+    }
   }
 }

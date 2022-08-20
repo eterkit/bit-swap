@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -30,13 +31,16 @@ class Boundary extends BodyComponent {
 abstract class Boundaries {
   static List<Boundary> walls(Forge2DGame game) {
     final topLeft = Vector2.zero();
-    final bottomRight = game.screenToWorld(GameConstants.gameResolution);
+    final bottomRight = game.screenToWorld(
+      kIsWeb
+          ? GameConstants.gameResolution
+          : game.camera.viewport.effectiveSize,
+    );
     final topRight = Vector2(bottomRight.x, topLeft.y);
     final bottomLeft = Vector2(topLeft.x, bottomRight.y);
 
     return [
       Boundary(topRight, bottomRight),
-      Boundary(topRight, topLeft),
       Boundary(bottomLeft, topLeft),
     ];
   }
