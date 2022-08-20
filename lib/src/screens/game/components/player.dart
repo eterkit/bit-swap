@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -7,7 +8,7 @@ import '../../../configuration/configuration.dart';
 import '../game.dart';
 import '../utils/constants.dart';
 
-class PlayerComponent extends BodyComponent<BitSwap> {
+class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
   late SpriteComponent _playerSpriteComponent;
   late Vector2 _initialSpawnPosition;
 
@@ -51,6 +52,20 @@ class PlayerComponent extends BodyComponent<BitSwap> {
   @override
   void update(double dt) {
     super.update(dt);
+  }
+
+  @override
+  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    final isSpace = keysPressed.contains(LogicalKeyboardKey.space);
+    if (isSpace) {
+      if (body.position.x < camera.gameSize.x / 2) {
+        jumpRight();
+      } else {
+        jumpLeft();
+      }
+      return false; // eat event
+    }
+    return true;
   }
 
   void jumpRight() {

@@ -40,9 +40,9 @@ class GameScreen extends StatelessWidget {
   }
 }
 
-class BitSwap extends Forge2DGame with TapDetector {
+class BitSwap extends Forge2DGame
+    with TapDetector, HasKeyboardHandlerComponents {
   BitSwap() : super(gravity: GameConstants.gravity);
-
   final Images imagesLoader = Images();
 
   late final Image playerImage;
