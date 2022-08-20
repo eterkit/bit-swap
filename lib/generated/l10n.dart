@@ -113,6 +113,16 @@ class L10n {
     );
   }
 
+  /// `Credits`
+  String get settingsMenuCredits {
+    return Intl.message(
+      'Credits',
+      name: 'settingsMenuCredits',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Pause`
   String get pauseMenuTitle {
     return Intl.message(

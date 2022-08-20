@@ -29,6 +29,7 @@ analyzer:
     sort_pub_dependencies: false
     flutter_style_todos: false
     directives_ordering: false
+    
 
 linter:
   rules:
@@ -69,3 +70,4 @@ linter:
     - unnecessary_lambdas
     - use_super_parameters
     - avoid_redundant_argument_values
+    - prefer_relative_imports

@@ -6,7 +6,7 @@ abstract class GameSprites {
   static const String player = 'player.png';
 }
 
-// TODO: Switch to pixel art sprites.
+// TODO: Switch to pixel art icons.
 /// Picked value from [GameIcons] returns the path to the game sprite asset.
 abstract class GameIcons {
   static const String close = 'assets/images/icons/close.png';

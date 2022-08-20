@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:bit_swap/game.dart';
+import 'game_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,5 +9,5 @@ Future<void> main() async {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive)
   ]);
-  runApp(const BitSwap());
+  runApp(const GameApp());
 }

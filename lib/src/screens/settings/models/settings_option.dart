@@ -1,5 +1,5 @@
 import '../../../../../generated/l10n.dart';
-import '../../../../configuration/configuration.dart';
+import '../../../configuration/configuration.dart';
 
 enum SettingsOption { sound, music }
 

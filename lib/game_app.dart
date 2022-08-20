@@ -6,8 +6,8 @@ import 'generated/l10n.dart';
 import 'src/configuration/configuration.dart';
 import 'utils/game_router.dart';
 
-class BitSwap extends StatelessWidget {
-  const BitSwap({
+class GameApp extends StatelessWidget {
+  const GameApp({
     super.key,
   });
 

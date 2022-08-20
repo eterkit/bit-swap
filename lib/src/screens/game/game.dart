@@ -10,6 +10,8 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import '../../configuration/configuration.dart';
 import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
+import 'components/boundary.dart';
+import 'components/player.dart';
 import 'utils/constants.dart';
 import 'widgets/pause_button.dart';
 import 'widgets/pause_menu.dart';
@@ -43,12 +45,32 @@ class BitSwap extends Forge2DGame with TapDetector {
 
   final Images imagesLoader = Images();
 
-  late Image playerImage;
+  late final Image playerImage;
+
+  late final PlayerComponent _player;
+
+  @override
+  void onTapDown(TapDownInfo info) {
+    if (_player.body.position.x < size.x / 2) {
+      _player.jumpRight();
+    } else {
+      _player.jumpLeft();
+    }
+  }
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
     await _loadImages();
+    final boundaries = Boundaries.walls(this);
+    boundaries.forEach(add);
+
+    await _initializePlayer();
+  }
+
+  Future<void> _initializePlayer() async {
+    _player = PlayerComponent();
+    await add(_player);
   }
 
   Future<void> _loadImages() async {

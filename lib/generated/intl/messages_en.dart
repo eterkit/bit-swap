@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainMenuGameTitle": MessageLookupByLibrary.simpleMessage("Bit\nSwap"),
         "mainMenuPlay": MessageLookupByLibrary.simpleMessage("PLAY"),
         "pauseMenuTitle": MessageLookupByLibrary.simpleMessage("Pause"),
+        "settingsMenuCredits": MessageLookupByLibrary.simpleMessage("Credits"),
         "settingsMenuTitle": MessageLookupByLibrary.simpleMessage("Settings"),
         "settingsMusic": MessageLookupByLibrary.simpleMessage("Music"),
         "settingsSound": MessageLookupByLibrary.simpleMessage("Sound")

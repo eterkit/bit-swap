@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../configuration/configuration.dart';
-import '../../../../widgets/spacer.dart';
+import '../../../configuration/configuration.dart';
+import '../../../widgets/spacer.dart';
 
 class SettingsOptionWidget extends StatelessWidget {
   const SettingsOptionWidget({
