@@ -8,30 +8,53 @@ import '../../../configuration/configuration.dart';
 import '../game.dart';
 import '../utils/constants.dart';
 import '../utils/dirt_position.dart';
+import '../utils/player_state.dart';
 
 class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
-  late SpriteComponent _spriteComponent;
+  late SpriteAnimationGroupComponent<PlayerState> _spriteComponent;
 
   _Direction _direction = _Direction.left;
 
   @override
-  Paint get paint => super.paint..color = GameColors.charcoal;
+  Paint get paint => super.paint
+    ..colorFilter = const ColorFilter.mode(
+      GameColors.charcoal,
+      BlendMode.srcATop,
+    );
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    final playerImage = await gameRef.imagesLoader.load(GameSprites.player);
-    _spriteComponent = SpriteComponent.fromImage(
-      playerImage,
+    final playerWallImage = await Sprite.load(
+      GameSprites.playerWall,
+      images: gameRef.imagesLoader,
+    );
+    final playerJumpImage = await Sprite.load(
+      GameSprites.playerJump,
+      images: gameRef.imagesLoader,
+    );
+
+    _spriteComponent = SpriteAnimationGroupComponent<PlayerState>(
       size: PlayerConstants.spriteSize,
-      paint: Paint()..color = GameColors.charcoal,
+      paint: paint,
       anchor: Anchor.center,
+      animations: {
+        PlayerState.wall: SpriteAnimation.spriteList(
+          [playerWallImage],
+          stepTime: 1,
+        ),
+        PlayerState.jump: SpriteAnimation.spriteList(
+          [playerJumpImage],
+          stepTime: 1,
+        ),
+      },
+      current: PlayerState.wall,
     );
     await add(_spriteComponent);
   }
 
   @override
-  bool get renderBody => true;
+  bool get renderBody => false;
 
   @override
   Body createBody() {
@@ -50,6 +73,7 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
   @override
   void update(double dt) {
     super.update(dt);
+    _checkPosition();
   }
 
   @override
@@ -75,10 +99,17 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
       0,
     );
 
-    gameRef.dirt.position = DirtPosition.none;
+    _spriteComponent.scale = Vector2(-_direction.value, 1);
+    _spriteComponent.current = PlayerState.jump;
 
-    // TODO: this code should be called only when character is near wall
-    // probable in some trigger or update method
+    gameRef.dirt.position = DirtPosition.none;
+  }
+
+  void _checkPosition() {
+    if (_spriteComponent.current == PlayerState.wall) return;
+    if (body.linearVelocity.x != 0) return;
+
+    _spriteComponent.current = PlayerState.wall;
     switch (_direction) {
       case _Direction.left:
         gameRef.dirt.position = DirtPosition.left;
