@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../generated/l10n.dart';
 import '../../configuration/configuration.dart';
+import '../../cubits/settings/settings_cubit.dart';
 import '../../widgets/game_app_bar.dart';
 import '../../widgets/game_icon_button.dart';
 import '../../widgets/spacer.dart';
@@ -31,17 +33,21 @@ class SettingsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(GameMargins.margin),
-          child: Column(
-            children: [
-              Expanded(child: _buildSettingsList(context)),
-              const Spacer(),
-              const CreditsButton(),
-              const VerticalSpacer(120),
-            ],
-          ),
+      body: _buildBody(context),
+    );
+  }
+
+  SafeArea _buildBody(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(GameMargins.margin),
+        child: Column(
+          children: [
+            Expanded(child: _buildSettingsList(context)),
+            const Spacer(),
+            const CreditsButton(),
+            const VerticalSpacer(120),
+          ],
         ),
       ),
     );
@@ -60,18 +66,19 @@ class SettingsScreen extends StatelessWidget {
           children: ListTile.divideTiles(
             context: context,
             tiles: [
-              // TODO: Add functionality to switches.
               SettingsOptionWidget(
                 label: SettingsOption.sound.name(strings),
                 iconPath: SettingsOption.sound.iconPath(isEnabled: true),
-                value: true,
-                onChanged: (value) {},
+                value: context.watch<SettingsCubit>().state.isSoundOn,
+                onChanged: (value) =>
+                    context.read<SettingsCubit>().toggleSound(),
               ),
               SettingsOptionWidget(
                 label: SettingsOption.music.name(strings),
                 iconPath: SettingsOption.music.iconPath(isEnabled: true),
-                value: true,
-                onChanged: (value) {},
+                value: context.watch<SettingsCubit>().state.isMusicOn,
+                onChanged: (value) =>
+                    context.read<SettingsCubit>().toggleMusic(),
               ),
             ],
           ).toList(growable: false),
