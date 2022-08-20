@@ -7,6 +7,7 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import '../../../configuration/configuration.dart';
 import '../game.dart';
 import '../utils/constants.dart';
+import '../utils/dirt_position.dart';
 
 class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
   late SpriteComponent _spriteComponent;
@@ -73,6 +74,19 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
       _direction.value * PlayerConstants.jumpForce,
       0,
     );
+
+    gameRef.dirt.position = DirtPosition.none;
+
+    // TODO: this code should be called only when character is near wall
+    // probable in some trigger or update method
+    switch (_direction) {
+      case _Direction.left:
+        gameRef.dirt.position = DirtPosition.left;
+        break;
+      case _Direction.right:
+        gameRef.dirt.position = DirtPosition.right;
+        break;
+    }
   }
 }
 
