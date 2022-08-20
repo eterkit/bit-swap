@@ -1,10 +1,18 @@
+import 'package:flutter/material.dart';
+
 import 'package:flame_forge2d/flame_forge2d.dart';
+
+import '../../../configuration/configuration.dart';
+import '../utils/constants.dart';
 
 class Boundary extends BodyComponent {
   Boundary(this.start, this.end);
 
   final Vector2 start;
   final Vector2 end;
+
+  @override
+  Paint get paint => super.paint..color = GameColors.charcoal;
 
   @override
   Body createBody() {
@@ -22,13 +30,13 @@ class Boundary extends BodyComponent {
 abstract class Boundaries {
   static List<Boundary> walls(Forge2DGame game) {
     final topLeft = Vector2.zero();
-    final bottomRight = game.screenToWorld(game.camera.viewport.effectiveSize);
+    final bottomRight = game.screenToWorld(GameConstants.gameResolution);
     final topRight = Vector2(bottomRight.x, topLeft.y);
     final bottomLeft = Vector2(topLeft.x, bottomRight.y);
 
     return [
       Boundary(topRight, bottomRight),
-      Boundary(bottomRight, bottomLeft),
+      Boundary(topRight, topLeft),
       Boundary(bottomLeft, topLeft),
     ];
   }
