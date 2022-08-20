@@ -5,12 +5,13 @@ import 'package:flame/cache.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame_bloc/flame_bloc.dart';
-import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:flame_forge2d/flame_forge2d.dart' show Forge2DGame;
 
 import '../../cubits/score/score_cubit.dart';
 import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
 import 'components/boundary.dart';
+import 'components/dirt.dart';
 import 'components/player.dart';
 import 'components/score.dart';
 import 'utils/constants.dart';
@@ -46,6 +47,8 @@ class BitSwap extends Forge2DGame
   BitSwap() : super(gravity: GameConstants.gravity);
   final Images imagesLoader = Images();
 
+  late final DirtComponent dirt;
+
   late final PlayerComponent _player;
   late final ScoreComponent _score;
 
@@ -62,6 +65,7 @@ class BitSwap extends Forge2DGame
 
     _setGameResolution();
 
+    await _initializeDirt();
     await _initializePlayer();
     await _initializeScore();
   }
@@ -89,5 +93,10 @@ class BitSwap extends Forge2DGame
         children: [_score],
       ),
     );
+  }
+
+  Future<void>? _initializeDirt() {
+    dirt = DirtComponent();
+    return add(dirt);
   }
 }
