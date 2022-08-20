@@ -3,15 +3,18 @@ import 'package:flutter/material.dart' hide Image;
 
 import 'package:flame/cache.dart';
 import 'package:flame/game.dart';
+import 'package:flame/image_composition.dart';
 import 'package:flame/input.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' show Forge2DGame;
 
+import '../../configuration/configuration.dart';
 import '../../cubits/score/score_cubit.dart';
 import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
 import 'components/boundary.dart';
 import 'components/dirt.dart';
+import 'components/obstacle/utils/obstacle_spawner.dart';
 import 'components/player.dart';
 import 'components/score.dart';
 import 'utils/constants.dart';
@@ -48,9 +51,12 @@ class BitSwap extends Forge2DGame
   final Images imagesLoader = Images();
 
   late final DirtComponent dirt;
+  late final List<Image> obstacleImages;
 
   late final PlayerComponent _player;
   late final ScoreComponent _score;
+
+  late final ObstacleSpawner obstacleSpawner;
 
   @override
   void onTapDown(TapDownInfo info) => _player.jump();
@@ -68,10 +74,18 @@ class BitSwap extends Forge2DGame
     await _initializeDirt();
     await _initializePlayer();
     await _initializeScore();
+    _initializeObstacles();
   }
 
   Future<void> _loadImages() async {
-    await Future.wait([]);
+    await Future.wait([
+      _loadObstacleImages(),
+    ]);
+  }
+
+  Future<void> _loadObstacleImages() async {
+    final futures = GameSprites.obstacleImages.map(imagesLoader.load);
+    obstacleImages = await Future.wait<Image>(futures);
   }
 
   void _setGameResolution() {
@@ -98,5 +112,15 @@ class BitSwap extends Forge2DGame
   Future<void>? _initializeDirt() {
     dirt = DirtComponent();
     return add(dirt);
+  }
+
+  Future<void>? _initializeObstacles() {
+    obstacleSpawner = ObstacleSpawner();
+    return add(obstacleSpawner);
+  }
+
+  void gameOver() {
+    pauseEngine();
+    // TODO: Kill Player and display game over screen.
   }
 }

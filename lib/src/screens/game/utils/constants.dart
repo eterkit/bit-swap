@@ -11,3 +11,9 @@ abstract class PlayerConstants {
   static const double bodyRadius = 2.4;
   static final Vector2 initialPosition = Vector2(0, 20);
 }
+
+abstract class ObstacleConstants {
+  static const double movementSpeed = 50;
+  static const double initialYPosition = 85;
+  static const int maxYPositionOffset = 30;
+}
