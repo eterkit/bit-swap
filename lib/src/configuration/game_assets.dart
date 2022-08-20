@@ -3,6 +3,8 @@
 abstract class GameSprites {
   static const String playerWall = 'player_wall.png';
   static const String playerJump = 'player_jump.png';
+  // Obstacle (NOTE: Same situation as above)
+  static const List<String> obstacleImages = ['obstacle-1.png'];
 }
 
 // TODO: Switch to pixel art icons.

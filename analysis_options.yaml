@@ -26,6 +26,8 @@ analyzer:
     always_use_package_imports: false
     always_put_control_body_on_new_line: false
     implicit_dynamic_type: false
+    implicit_dynamic_method: false
+    implicit_dynamic_parameter: false
     sort_pub_dependencies: false
     flutter_style_todos: false
     directives_ordering: false
