@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'generated/l10n.dart';
 import 'src/configuration/configuration.dart';
+import 'src/cubits/settings/settings_cubit.dart';
 import 'utils/game_router.dart';
 
 class GameApp extends StatelessWidget {
@@ -15,19 +17,22 @@ class GameApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      onGenerateTitle: (context) => L10n.of(context).gameName,
-      debugShowCheckedModeBanner: false,
-      theme: buildGameTheme(),
-      localizationsDelegates: const [
-        L10n.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: L10n.delegate.supportedLocales,
-      routeInformationParser: _gameRouter.router.routeInformationParser,
-      routeInformationProvider: _gameRouter.router.routeInformationProvider,
-      routerDelegate: _gameRouter.router.routerDelegate,
+    return BlocProvider<SettingsCubit>.value(
+      value: SettingsCubit()..load(),
+      child: MaterialApp.router(
+        onGenerateTitle: (context) => L10n.of(context).gameName,
+        debugShowCheckedModeBanner: false,
+        theme: buildGameTheme(),
+        localizationsDelegates: const [
+          L10n.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: L10n.delegate.supportedLocales,
+        routeInformationParser: _gameRouter.router.routeInformationParser,
+        routeInformationProvider: _gameRouter.router.routeInformationProvider,
+        routerDelegate: _gameRouter.router.routerDelegate,
+      ),
     );
   }
 }

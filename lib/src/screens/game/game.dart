@@ -4,12 +4,15 @@ import 'package:flutter/material.dart' hide Image;
 import 'package:flame/cache.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
+import '../../cubits/score/score_cubit.dart';
 import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
 import 'components/boundary.dart';
 import 'components/player.dart';
+import 'components/score.dart';
 import 'utils/constants.dart';
 import 'widgets/pause_button.dart';
 import 'widgets/pause_menu.dart';
@@ -44,6 +47,7 @@ class BitSwap extends Forge2DGame
   final Images imagesLoader = Images();
 
   late final PlayerComponent _player;
+  late final ScoreComponent _score;
 
   @override
   void onTapDown(TapDownInfo info) => _player.jump();
@@ -59,6 +63,7 @@ class BitSwap extends Forge2DGame
     _setGameResolution();
 
     await _initializePlayer();
+    await _initializeScore();
   }
 
   Future<void> _loadImages() async {
@@ -71,8 +76,18 @@ class BitSwap extends Forge2DGame
     camera.viewport = FixedResolutionViewport(GameConstants.gameResolution);
   }
 
-  Future<void> _initializePlayer() async {
+  Future<void>? _initializePlayer() {
     _player = PlayerComponent();
-    await add(_player);
+    return add(_player);
+  }
+
+  Future<void>? _initializeScore() {
+    _score = ScoreComponent();
+    return add(
+      FlameBlocProvider<ScoreCubit, ScoreState>.value(
+        value: ScoreCubit()..load(),
+        children: [_score],
+      ),
+    );
   }
 }

@@ -17,11 +17,15 @@ dependencies:
   cupertino_icons: ^1.0.5
 
   # Tools
+  equatable: ^2.0.5
   go_router: ^4.2.8
   flame: ^1.3.0
   flame_forge2d: ^0.12.2
+  flame_bloc: ^1.7.0
+  flutter_bloc: ^8.1.1
   intl: ^0.17.0
-
+  shared_preferences: ^2.0.15
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
