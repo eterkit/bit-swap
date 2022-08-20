@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Image;
 
@@ -8,7 +6,6 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
-import '../../configuration/configuration.dart';
 import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
 import 'components/boundary.dart';
@@ -46,18 +43,10 @@ class BitSwap extends Forge2DGame
   BitSwap() : super(gravity: GameConstants.gravity);
   final Images imagesLoader = Images();
 
-  late final Image playerImage;
-
   late final PlayerComponent _player;
 
   @override
-  void onTapDown(TapDownInfo info) {
-    if (_player.body.position.x < size.x / 2) {
-      _player.jumpRight();
-    } else {
-      _player.jumpLeft();
-    }
-  }
+  void onTapDown(TapDownInfo info) => _player.jump();
 
   @override
   Future<void> onLoad() async {
@@ -72,24 +61,18 @@ class BitSwap extends Forge2DGame
     await _initializePlayer();
   }
 
-  Future<void> _initializePlayer() async {
-    _player = PlayerComponent();
-    await add(_player);
-  }
-
   Future<void> _loadImages() async {
-    await Future.wait([
-      _loadPlayerImage(),
-    ]);
-  }
-
-  Future<void> _loadPlayerImage() async {
-    playerImage = await imagesLoader.load(GameSprites.player);
+    await Future.wait([]);
   }
 
   void _setGameResolution() {
     // Set fixed resolution only for web version.
     if (!kIsWeb) return;
     camera.viewport = FixedResolutionViewport(GameConstants.gameResolution);
+  }
+
+  Future<void> _initializePlayer() async {
+    _player = PlayerComponent();
+    await add(_player);
   }
 }

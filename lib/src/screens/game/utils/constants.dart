@@ -9,5 +9,5 @@ abstract class PlayerConstants {
   static const double jumpForce = 120;
   static final Vector2 spriteSize = Vector2(3, 3);
   static const double bodyRadius = 2;
-  static const double initialPositionYOffset = 30;
+  static final Vector2 initialPosition = Vector2(0, 20);
 }
