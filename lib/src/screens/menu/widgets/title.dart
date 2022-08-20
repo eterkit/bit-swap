@@ -13,7 +13,7 @@ class Title extends StatelessWidget {
     return Transform.rotate(
       angle: -0.15,
       child: Text(
-        L10n.of(context).gameName,
+        L10n.of(context).mainMenuGameTitle,
         textAlign: TextAlign.center,
         style: GameTextStyles.title.copyWith(fontSize: 52),
       ),

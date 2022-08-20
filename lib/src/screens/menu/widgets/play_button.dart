@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import '../../../../generated/l10n.dart';
+import '../../../../utils/game_router.dart';
 import '../../../widgets/game_elevated_button.dart';
 
 class PlayButton extends StatelessWidget {
@@ -17,8 +20,7 @@ class PlayButton extends StatelessWidget {
       label: L10n.of(context).mainMenuPlay,
       width: _width,
       height: _height,
-      // TODO: Navigate to game screen.
-      onPressed: () {},
+      onPressed: () => context.goNamed(GameScreenRoute.name),
     );
   }
 }

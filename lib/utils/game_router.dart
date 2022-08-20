@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import '../src/screens/game/game.dart';
 import '../src/screens/menu/menu.dart';
 import '../src/screens/menu/settings/settings.dart';
 import '../src/screens/splash/splash.dart';
@@ -46,6 +47,19 @@ class GameRouter {
               child: SettingsScreen(),
             ),
           ),
+          GoRoute(
+            path: 'game',
+            name: GameScreenRoute.name,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              transitionsBuilder: (_, animation, __, child) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+              child: const GameScreen(),
+            ),
+          ),
         ],
       ),
     ],
@@ -64,4 +78,8 @@ abstract class MenuScreenRoute {
 
 abstract class SettingsScreenRoute {
   static const name = 'settings';
+}
+
+abstract class GameScreenRoute {
+  static const name = 'game';
 }

@@ -11,7 +11,7 @@ ThemeData buildGameTheme() => ThemeData(
       appBarTheme: const AppBarTheme(
         backgroundColor: GameColors.lavenderGrey,
       ),
-      fontFamily: 'MotionControl',
+      fontFamily: 'MisterPixel',
       splashColor: GameColors.charcoal.withOpacity(0.1),
       highlightColor: GameColors.charcoal.withOpacity(0.3),
     );

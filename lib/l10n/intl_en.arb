@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
   "gameName": "Bit Swap",
+  "mainMenuGameTitle": "Bit\nSwap",
   "mainMenuPlay": "PLAY",
   "settingsMenuTitle": "Settings",
   "settingsSound": "Sound",

@@ -63,6 +63,16 @@ class L10n {
     );
   }
 
+  /// `Bit\nSwap`
+  String get mainMenuGameTitle {
+    return Intl.message(
+      'Bit\nSwap',
+      name: 'mainMenuGameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `PLAY`
   String get mainMenuPlay {
     return Intl.message(

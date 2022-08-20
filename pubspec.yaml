@@ -39,12 +39,12 @@ flutter:
     - assets/audio/
 
   fonts:
-    - family: PermanentMarker
+    - family: ThirteenPixel
       fonts:
-        - asset: assets/fonts/permanent_marker/permanent_marker.ttf
-    - family: MotionControl
+        - asset: assets/fonts/thirteen_pixel/thirteen_pixel.ttf
+    - family: MisterPixel
       fonts:
-        - asset: assets/fonts/motion_control/motion_control.otf
+        - asset: assets/fonts/mister_pixel/mister_pixel.otf
 
 
 flutter_intl:

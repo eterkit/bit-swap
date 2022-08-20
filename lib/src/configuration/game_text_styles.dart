@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'game_colors.dart';
 
 abstract class GameTextStyles {
-  static const String _fontFamily = 'MotionControl';
-  static const String _titleFontFamily = 'PermanentMarker';
+  static const String _fontFamily = 'MisterPixel';
+  static const String _titleFontFamily = 'ThirteenPixel';
 
   static TextStyle get title => const TextStyle(
         fontFamily: _titleFontFamily,

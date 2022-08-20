@@ -1,7 +1,12 @@
 /// Picked value from [GameSprites] returns the path to the game sprite asset.
 /// Proceeded by 'assets/images/' as required by Flame.
-abstract class GameSprites {}
+abstract class GameSprites {
+  // Player sprite (TODO: This is just an example, provide final sprite sheet)
+  // Check on how to import sprites from clipboard on minisprit.es
+  static const String player = 'player.png';
+}
 
+// TODO: Switch to pixel art sprites.
 /// Picked value from [GameIcons] returns the path to the game sprite asset.
 abstract class GameIcons {
   static const String close = 'assets/images/icons/close.png';

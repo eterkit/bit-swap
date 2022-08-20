@@ -31,11 +31,11 @@ class MenuScreen extends StatelessWidget {
           padding: const EdgeInsets.all(GameMargins.margin),
           child: Column(
             children: const [
-              VerticalSpacer(80),
+              VerticalSpacer(60),
               Center(child: Title()),
               Spacer(),
               PlayButton(),
-              VerticalSpacer(160),
+              VerticalSpacer(120),
             ],
           ),
         ),
