@@ -33,7 +33,7 @@ class PlayerComponent extends BodyComponent<BitSwap> {
   Body createBody() {
     _initialSpawnPosition = Vector2(
       gameRef.size.x - PlayerConstants.bodyRadius,
-      gameRef.size.y - PlayerConstants.initialPositionYOffset,
+      PlayerConstants.initialPositionYOffset,
     );
 
     final shape = CircleShape()..radius = PlayerConstants.bodyRadius;

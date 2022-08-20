@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Image;
 
 import 'package:flame/cache.dart';
@@ -62,8 +63,11 @@ class BitSwap extends Forge2DGame with TapDetector {
   Future<void> onLoad() async {
     await super.onLoad();
     await _loadImages();
+
     final boundaries = Boundaries.walls(this);
     boundaries.forEach(add);
+
+    _setGameResolution();
 
     await _initializePlayer();
   }
@@ -81,5 +85,11 @@ class BitSwap extends Forge2DGame with TapDetector {
 
   Future<void> _loadPlayerImage() async {
     playerImage = await imagesLoader.load(GameSprites.player);
+  }
+
+  void _setGameResolution() {
+    // Set fixed resolution only for web version.
+    if (!kIsWeb) return;
+    camera.viewport = FixedResolutionViewport(GameConstants.gameResolution);
   }
 }
