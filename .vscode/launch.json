@@ -7,7 +7,11 @@
         {
             "name": "bit-swap",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--web-renderer",
+                "canvaskit"
+            ]
         },
     ]
 }
