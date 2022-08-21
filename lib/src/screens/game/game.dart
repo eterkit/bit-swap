@@ -161,6 +161,7 @@ class BitSwap extends Forge2DGame
   Future<void> gameOver() async {
     overlays.remove(PauseButton.id);
     _score.stopCounting();
+    playEffect(GameAudio.crash);
     final score = _score.bloc.state.score;
     final highScore = _score.bloc.state.highScore;
     if (score > highScore) _score.bloc.updateHighScore(score);

@@ -43,4 +43,5 @@ abstract class GameIcons {
 abstract class GameAudio {
   static const String music = 'music/music.mp3';
   static const String jump = 'sfx/jump.wav';
+  static const String crash = 'sfx/crash.wav';
 }

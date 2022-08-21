@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flame_audio/flame_audio.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../utils/game_router.dart';
@@ -31,12 +32,20 @@ class _SplashScreenState extends State<SplashScreen> {
     context.replaceNamed(MenuScreenRoute.name);
   }
 
-  Future<void> _preloadAssets(BuildContext context) {
+  Future<void> _preloadAssets(BuildContext context) async {
+    await FlameAudio.audioCache.loadAll(
+      [
+        GameAudio.music,
+        GameAudio.jump,
+        GameAudio.crash,
+      ],
+    );
+
     const items = GameIcons.iconsToPreload;
 
     final futures = items.map<Future<void>>(
       (asset) => precacheImage(AssetImage(asset), context),
     );
-    return Future.wait(futures);
+    await Future.wait(futures);
   }
 }
