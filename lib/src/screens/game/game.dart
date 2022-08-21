@@ -19,6 +19,7 @@ import 'components/obstacle/obstacle_spawner.dart';
 import 'components/player.dart';
 import 'components/player_crash_effect.dart';
 import 'components/score.dart';
+import 'components/viewport_background.dart';
 import 'utils/constants.dart';
 import 'widgets/game_over_menu.dart';
 import 'widgets/pause_button.dart';
@@ -81,7 +82,7 @@ class BitSwap extends Forge2DGame
     boundaries.forEach(add);
 
     _setGameResolution();
-
+    await _initializeBackground();
     await _initializeDirt();
     await _initializePlayer();
     await _initializeScore();
@@ -103,6 +104,10 @@ class BitSwap extends Forge2DGame
     // Set fixed resolution only for web version.
     if (!kIsWeb) return;
     camera.viewport = FixedResolutionViewport(GameConstants.gameResolution);
+  }
+
+  Future<void>? _initializeBackground() {
+    return add(ViewportBackground(size: camera.viewport.effectiveSize));
   }
 
   Future<void>? _initializePlayer() {
