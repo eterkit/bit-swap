@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/rendering.dart';
 
 import 'package:flame/components.dart';
@@ -8,12 +6,12 @@ import 'package:flame/particles.dart';
 import '../../../configuration/configuration.dart';
 import '../utils/constants.dart';
 import '../utils/dirt_position.dart';
+import '../utils/random_generator.dart';
 
 class DirtComponent extends TimerComponent with HasGameRef {
   DirtComponent() : super(period: 0.1, repeat: true);
 
   DirtPosition position = DirtPosition.left;
-  final math.Random _rnd = math.Random();
 
   static const _xBaseSpeed = 5;
   static const _yBaseSpeed = -15;
@@ -64,11 +62,11 @@ class DirtComponent extends TimerComponent with HasGameRef {
           return AcceleratedParticle(
             speed: Vector2(
               direction * _xBaseSpeed +
-                  direction * _speedModifier * _rnd.nextDouble(),
-              _yBaseSpeed - _speedModifier * _rnd.nextDouble(),
+                  direction * randomDouble(0, _speedModifier),
+              _yBaseSpeed - randomDouble(0, _speedModifier),
             ),
             child: CircleParticle(
-              radius: 0.05 + 0.1 * _rnd.nextDouble(),
+              radius: randomDouble(0.05, 0.15),
               paint: Paint()..color = GameColors.charcoal,
             ),
           );

@@ -74,7 +74,7 @@ class BitSwap extends Forge2DGame
     await _initializeDirt();
     await _initializePlayer();
     await _initializeScore();
-    _initializeObstacles();
+    await _initializeObstacles();
   }
 
   Future<void> _loadImages() async {
@@ -115,7 +115,8 @@ class BitSwap extends Forge2DGame
   }
 
   Future<void>? _initializeObstacles() {
-    obstacleSpawner = ObstacleSpawner();
+    // Min rate is 30.
+    obstacleSpawner = ObstacleSpawner(50);
     return add(obstacleSpawner);
   }
 
