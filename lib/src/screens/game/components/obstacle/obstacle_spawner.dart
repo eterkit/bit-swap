@@ -44,11 +44,6 @@ class ObstacleSpawner extends TimerComponent
     _ticks = 0;
   }
 
-  @override
-  Future<void>? onLoad() async {
-    await super.onLoad();
-  }
-
   Vector2 _getRandomPosition({double? positionY}) {
     final shouldSpawnRight = randomBool();
     final positionX = shouldSpawnRight ? gameRef.size.x : 0.0;

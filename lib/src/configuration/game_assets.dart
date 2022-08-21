@@ -39,3 +39,7 @@ abstract class GameIcons {
     leaderboard,
   ];
 }
+
+abstract class GameAudio {
+  static const String music = 'music/music.mp3';
+}

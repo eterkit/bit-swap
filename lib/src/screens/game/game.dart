@@ -82,7 +82,7 @@ class BitSwap extends Forge2DGame
     pauseEngine();
 
     if (settings.isSoundOn && settings.isMusicOn) {
-      FlameAudio.bgm.play('music/music.mp3', volume: 0.5);
+      FlameAudio.bgm.play(GameAudio.music, volume: 0.5);
     }
 
     await _loadImages();
