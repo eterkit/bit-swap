@@ -27,24 +27,28 @@ class MenuScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(GameMargins.margin),
-          child: Column(
-            children: [
-              const VerticalSpacer(60),
-              const Center(child: Title()),
-              const Spacer(),
-              const PlayButton(),
-              const VerticalSpacer(20),
-              Text(
-                L10n.of(context).mainMenuPlayInstructions,
-                style: GameTextStyles.regular15,
-                textAlign: TextAlign.center,
-              ),
-              const VerticalSpacer(120),
-            ],
-          ),
+      body: _buildBody(context),
+    );
+  }
+
+  SafeArea _buildBody(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(GameMargins.margin),
+        child: Column(
+          children: [
+            const VerticalSpacer(60),
+            const Center(child: Title()),
+            const Spacer(),
+            const PlayButton(),
+            const VerticalSpacer(20),
+            Text(
+              L10n.of(context).mainMenuPlayInstructions,
+              style: GameTextStyles.regular15,
+              textAlign: TextAlign.center,
+            ),
+            const VerticalSpacer(120),
+          ],
         ),
       ),
     );

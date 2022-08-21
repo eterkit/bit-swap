@@ -15,7 +15,7 @@ import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
 import 'components/boundary.dart';
 import 'components/dirt.dart';
-import 'components/obstacle/utils/obstacle_spawner.dart';
+import 'components/obstacle/obstacle_spawner.dart';
 import 'components/player.dart';
 import 'components/player_crash_effect.dart';
 import 'components/score.dart';
@@ -53,7 +53,7 @@ class GameScreen extends StatelessWidget {
 
 class BitSwap extends Forge2DGame
     with TapDetector, HasKeyboardHandlerComponents {
-  BitSwap(this.context) : super(gravity: GameConstants.gravity);
+  BitSwap(this.context) : super(gravity: Vector2.zero());
 
   final BuildContext context;
 
@@ -126,9 +126,12 @@ class BitSwap extends Forge2DGame
   }
 
   Future<void>? _initializeObstacles() {
-    // Min rate is 30.
-    obstacleSpawner = ObstacleSpawner(50);
-    return add(obstacleSpawner);
+    return add(
+      FlameBlocProvider<ScoreCubit, ScoreState>.value(
+        value: context.read<ScoreCubit>(),
+        children: [ObstacleSpawner()],
+      ),
+    );
   }
 
   Future<void> gameOver() async {

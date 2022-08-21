@@ -27,7 +27,7 @@ class GameRouter {
         ),
       ),
       GoRoute(
-        path: '/menu',
+        path: '/',
         name: MenuScreenRoute.name,
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (_, animation, __, child) {
