@@ -33,7 +33,7 @@ class SettingsOptionWidget extends StatelessWidget {
           const HorizontalSpacer(GameSpacers.small),
           Text(
             label,
-            style: GameTextStyles.regular15,
+            style: GameTextStyles.regular28,
           ),
         ],
       ),

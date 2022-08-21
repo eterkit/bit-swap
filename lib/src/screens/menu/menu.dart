@@ -44,7 +44,7 @@ class MenuScreen extends StatelessWidget {
             const VerticalSpacer(20),
             Text(
               L10n.of(context).mainMenuPlayInstructions,
-              style: GameTextStyles.regular15,
+              style: GameTextStyles.regular28,
               textAlign: TextAlign.center,
             ),
             const VerticalSpacer(120),

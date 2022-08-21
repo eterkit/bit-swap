@@ -13,7 +13,7 @@ class GameLoadingIndicator extends StatelessWidget {
       child: Center(
         child: Text(
           L10n.of(context).generalLoading,
-          style: GameTextStyles.regular15,
+          style: GameTextStyles.regular28,
         ),
       ),
     );

@@ -84,11 +84,11 @@ class GameOverMenu extends StatelessWidget {
       children: [
         Text(
           '${strings.gameOverMenuScore}: ${score.toStringAsFixed(3)}',
-          style: GameTextStyles.regular15,
+          style: GameTextStyles.regular28,
         ),
         Text(
           '${strings.gameOverMenuHighScore}: ${highScore.toStringAsFixed(3)}',
-          style: GameTextStyles.regular15,
+          style: GameTextStyles.regular28,
         ),
       ],
     );

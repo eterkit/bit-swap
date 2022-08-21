@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../widgets/game_elevated_button.dart';
+import 'credits_dialog.dart';
 
 class CreditsButton extends StatelessWidget {
   const CreditsButton({
@@ -19,18 +20,8 @@ class CreditsButton extends StatelessWidget {
       height: _height,
       onPressed: () => showDialog<void>(
         context: context,
-        builder: (context) => const _CreditsDialog(),
+        builder: (context) => const CreditsDialog(),
       ),
     );
-  }
-}
-
-class _CreditsDialog extends StatelessWidget {
-  const _CreditsDialog();
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Build credits dialog.
-    return const AlertDialog();
   }
 }

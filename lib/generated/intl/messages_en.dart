@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "creditsAuthors": MessageLookupByLibrary.simpleMessage("Authors"),
+        "creditsFonts": MessageLookupByLibrary.simpleMessage("Fonts"),
+        "creditsGraphics": MessageLookupByLibrary.simpleMessage("Graphics"),
+        "creditsMusic": MessageLookupByLibrary.simpleMessage("Music"),
         "gameName": MessageLookupByLibrary.simpleMessage("Bit Swap"),
         "gameOverMenuHighScore":
             MessageLookupByLibrary.simpleMessage("High score"),

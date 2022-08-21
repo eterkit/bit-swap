@@ -12,7 +12,7 @@ class ScoreComponent extends TextComponent
           text: '0',
           anchor: Anchor.center,
           textRenderer: TextPaint(
-            style: GameTextStyles.regular15.copyWith(
+            style: GameTextStyles.regular28.copyWith(
               fontSize: 3,
             ),
           ),
