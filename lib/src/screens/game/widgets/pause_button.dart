@@ -20,19 +20,25 @@ class PauseButton extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           right: GameMargins.small,
-          top: MediaQuery.of(context).padding.top,
+          top: GameMargins.small,
         ),
         child: Row(
           children: [
             const Spacer(),
-            GameIconButton.image(
-              path: GameIcons.pause,
-              onPressed: () {
-                gameRef.pauseEngine();
-                gameRef.overlays.add(PauseMenu.id);
-              },
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: GameColors.lavenderGrey,
+              ),
+              child: GameIconButton.image(
+                path: GameIcons.pause,
+                onPressed: () {
+                  gameRef.pauseEngine();
+                  gameRef.overlays.add(PauseMenu.id);
+                },
+              ),
             ),
           ],
         ),
