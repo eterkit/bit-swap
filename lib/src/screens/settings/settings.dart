@@ -55,6 +55,9 @@ class SettingsScreen extends StatelessWidget {
 
   Widget _buildSettingsList(BuildContext context) {
     final strings = L10n.of(context);
+    final isMusicOn = context.watch<SettingsCubit>().state.isMusicOn;
+    final isSoundOn = context.watch<SettingsCubit>().state.isSoundOn;
+
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(
@@ -68,15 +71,15 @@ class SettingsScreen extends StatelessWidget {
             tiles: [
               SettingsOptionWidget(
                 label: SettingsOption.sound.name(strings),
-                iconPath: SettingsOption.sound.iconPath(isEnabled: true),
-                value: context.watch<SettingsCubit>().state.isSoundOn,
+                iconPath: SettingsOption.sound.iconPath(isEnabled: isSoundOn),
+                value: isSoundOn,
                 onChanged: (value) =>
                     context.read<SettingsCubit>().toggleSound(),
               ),
               SettingsOptionWidget(
                 label: SettingsOption.music.name(strings),
-                iconPath: SettingsOption.music.iconPath(isEnabled: true),
-                value: context.watch<SettingsCubit>().state.isMusicOn,
+                iconPath: SettingsOption.music.iconPath(isEnabled: isMusicOn),
+                value: isMusicOn,
                 onChanged: (value) =>
                     context.read<SettingsCubit>().toggleMusic(),
               ),
