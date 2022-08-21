@@ -7,7 +7,7 @@ class GameIconButton extends StatelessWidget {
     super.key,
     required this.iconData,
     required this.onPressed,
-    this.color = GameColors.charcoal,
+    this.color = GameColors.darkColor,
     this.size = GameSizes.iconButtonSize,
   })  : path = null,
         assert(iconData != null);
@@ -16,7 +16,7 @@ class GameIconButton extends StatelessWidget {
     super.key,
     required this.path,
     required this.onPressed,
-    this.color = GameColors.charcoal,
+    this.color = GameColors.darkColor,
     this.size = GameSizes.iconButtonSize,
   })  : iconData = null,
         assert(path != null);

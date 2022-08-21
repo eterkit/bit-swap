@@ -13,7 +13,7 @@ class Boundary extends BodyComponent {
   final Vector2 end;
 
   @override
-  Paint get paint => super.paint..color = GameColors.charcoal;
+  Paint get paint => super.paint..color = GameColors.darkColor;
 
   @override
   Body createBody() {

@@ -30,7 +30,7 @@ class PauseButton extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: GameColors.lavenderGrey,
+                color: GameColors.lightColor,
               ),
               child: GameIconButton.image(
                 path: GameIcons.pause,

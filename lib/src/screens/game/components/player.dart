@@ -18,7 +18,7 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
   @override
   Paint get paint => super.paint
     ..colorFilter = const ColorFilter.mode(
-      GameColors.charcoal,
+      GameColors.darkColor,
       BlendMode.srcATop,
     );
 

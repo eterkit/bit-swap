@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("New high score"),
         "gameOverMenuScore": MessageLookupByLibrary.simpleMessage("Score"),
         "gameOverMenuTitle": MessageLookupByLibrary.simpleMessage("Game over"),
+        "generalLoading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "mainMenuGameTitle": MessageLookupByLibrary.simpleMessage("Bit\nSwap"),
         "mainMenuPlay": MessageLookupByLibrary.simpleMessage("PLAY"),
         "mainMenuPlayInstructions": MessageLookupByLibrary.simpleMessage(

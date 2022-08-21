@@ -7,8 +7,8 @@ class GameElevatedButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
-    this.backgroundColor = GameColors.charcoal,
-    this.labelColor = GameColors.lavenderGrey,
+    this.backgroundColor = GameColors.darkColor,
+    this.labelColor = GameColors.lightColor,
     this.width,
     this.height,
   });

@@ -21,7 +21,7 @@ class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
   @override
   Paint get paint => super.paint
     ..colorFilter = const ColorFilter.mode(
-      GameColors.charcoal,
+      GameColors.darkColor,
       BlendMode.srcATop,
     );
 

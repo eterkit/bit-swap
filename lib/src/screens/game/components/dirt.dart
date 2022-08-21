@@ -67,7 +67,7 @@ class DirtComponent extends TimerComponent with HasGameRef {
             ),
             child: CircleParticle(
               radius: randomDouble(0.05, 0.15),
-              paint: Paint()..color = GameColors.charcoal,
+              paint: Paint()..color = GameColors.darkColor,
             ),
           );
         },

@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
   "gameName": "Bit Swap",
+  "generalLoading": "Loading...",
   "mainMenuGameTitle": "Bit\nSwap",
   "mainMenuPlay": "PLAY",
   "mainMenuPlayInstructions": "Tap or press space to move character",

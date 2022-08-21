@@ -8,5 +8,5 @@ class ViewportBackground extends RectangleComponent {
   ViewportBackground({super.size});
 
   @override
-  Paint get paint => Paint()..color = GameColors.lavenderGrey;
+  Paint get paint => Paint()..color = GameColors.lightColor;
 }
