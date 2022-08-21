@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import '../src/configuration/game_colors.dart';
 import '../src/screens/game/game.dart';
 import '../src/screens/menu/menu.dart';
 import '../src/screens/settings/settings.dart';
@@ -57,7 +58,7 @@ class GameRouter {
                   child: child,
                 );
               },
-              child: const GameScreen(),
+              child: GameScreen(key: ValueKey(DateTime.now())),
             ),
           ),
         ],

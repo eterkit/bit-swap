@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../utils/game_router.dart';
 import '../../../configuration/configuration.dart';
 import '../../../cubits/score/score_cubit.dart';
 import '../../../widgets/game_icon_button.dart';
@@ -59,7 +60,7 @@ class GameOverMenu extends StatelessWidget {
                 size: GameSizes.menuOverlayIconButtonSize,
                 onPressed: () async {
                   gameRef.overlays.remove(GameOverMenu.id);
-                  gameRef.restart();
+                  context.replaceNamed(GameScreenRoute.name);
                 },
               ),
             ],

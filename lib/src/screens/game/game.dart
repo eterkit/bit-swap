@@ -148,8 +148,4 @@ class BitSwap extends Forge2DGame
     );
     overlays.add(GameOverMenu.id);
   }
-
-  Future<void> restart() async {
-    // TODO: Restart.
-  }
 }
