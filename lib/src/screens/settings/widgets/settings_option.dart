@@ -28,7 +28,7 @@ class SettingsOptionWidget extends StatelessWidget {
             height: GameSizes.settingsOptionIconSize,
             fit: BoxFit.cover,
             filterQuality: FilterQuality.none,
-            color: GameColors.charcoal,
+            color: GameColors.darkColor,
           ),
           const HorizontalSpacer(GameSpacers.small),
           Text(
@@ -39,10 +39,10 @@ class SettingsOptionWidget extends StatelessWidget {
       ),
       value: value,
       onChanged: onChanged,
-      activeTrackColor: GameColors.charcoal.withOpacity(0.6),
-      activeColor: GameColors.charcoal,
-      inactiveTrackColor: GameColors.charcoal.withOpacity(0.3),
-      inactiveThumbColor: GameColors.charcoal.withOpacity(0.6),
+      activeTrackColor: GameColors.darkColor.withOpacity(0.6),
+      activeColor: GameColors.darkColor,
+      inactiveTrackColor: GameColors.darkColor.withOpacity(0.3),
+      inactiveThumbColor: GameColors.darkColor.withOpacity(0.6),
     );
   }
 }

@@ -1,3 +1,8 @@
+Authors:
+- Marc Sanny
+- Kamil Powałowski
+- Tomasz Wyrowiński
+
 
 Fonts:
 

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'configuration.dart';
 
 ThemeData buildGameTheme() => ThemeData(
-      primaryColor: GameColors.lavenderGrey,
-      canvasColor: GameColors.lavenderGrey,
+      primaryColor: GameColors.lightColor,
+      canvasColor: GameColors.lightColor,
       colorScheme: const ColorScheme.light(
-        secondary: GameColors.charcoal,
+        secondary: GameColors.darkColor,
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: GameColors.lavenderGrey,
+        backgroundColor: GameColors.lightColor,
       ),
       fontFamily: 'MisterPixel',
-      splashColor: GameColors.charcoal.withOpacity(0.1),
-      highlightColor: GameColors.charcoal.withOpacity(0.3),
+      splashColor: GameColors.darkColor.withOpacity(0.1),
+      highlightColor: GameColors.darkColor.withOpacity(0.3),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
 abstract class GameColors {
-  static const Color lavenderGrey = Color(0xFFD8DDEF);
-  static const Color charcoal = Color(0xFF40434E);
+  static const Color lightColor = Color(0xFF70A37F);
+  static const Color darkColor = Color(0xFF000F08);
 }

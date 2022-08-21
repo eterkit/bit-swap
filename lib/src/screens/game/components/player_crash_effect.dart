@@ -18,7 +18,7 @@ class PlayerCrashEffectComponent extends ParticleSystemComponent {
               child: CircleParticle(
                 lifespan: _lifespan,
                 radius: randomDouble(0.1, 0.5),
-                paint: Paint()..color = GameColors.charcoal,
+                paint: Paint()..color = GameColors.darkColor,
               ),
             ),
           ),

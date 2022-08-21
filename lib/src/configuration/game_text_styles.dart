@@ -10,13 +10,13 @@ abstract class GameTextStyles {
         fontFamily: _titleFontFamily,
         fontSize: 34,
         height: 1,
-        color: GameColors.charcoal,
+        color: GameColors.darkColor,
       );
 
   static TextStyle get regular15 => const TextStyle(
         fontFamily: _fontFamily,
         fontSize: 28,
         fontWeight: FontWeight.normal,
-        color: GameColors.charcoal,
+        color: GameColors.darkColor,
       );
 }

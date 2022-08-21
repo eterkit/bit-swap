@@ -11,7 +11,7 @@ class GameBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints.expand(),
-      color: GameColors.charcoal,
+      color: GameColors.darkColor,
     );
   }
 }

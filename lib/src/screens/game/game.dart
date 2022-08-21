@@ -76,6 +76,8 @@ class BitSwap extends Forge2DGame
     await super.onLoad();
     context.read<ScoreCubit>().resetScore();
 
+    pauseEngine();
+
     await _loadImages();
 
     final boundaries = Boundaries.walls(this);
@@ -87,6 +89,8 @@ class BitSwap extends Forge2DGame
     await _initializePlayer();
     await _initializeScore();
     await _initializeObstacles();
+
+    resumeEngine();
   }
 
   Future<void> _loadImages() async {
