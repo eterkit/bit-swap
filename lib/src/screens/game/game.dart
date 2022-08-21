@@ -7,6 +7,7 @@ import 'package:flame/image_composition.dart';
 import 'package:flame/input.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' show Forge2DGame;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../configuration/configuration.dart';
 import '../../cubits/score/score_cubit.dart';
@@ -16,8 +17,10 @@ import 'components/boundary.dart';
 import 'components/dirt.dart';
 import 'components/obstacle/utils/obstacle_spawner.dart';
 import 'components/player.dart';
+import 'components/player_crash_effect.dart';
 import 'components/score.dart';
 import 'utils/constants.dart';
+import 'widgets/game_over_menu.dart';
 import 'widgets/pause_button.dart';
 import 'widgets/pause_menu.dart';
 
@@ -38,8 +41,11 @@ class GameScreen extends StatelessWidget {
         overlayBuilderMap: {
           PauseButton.id: (_, gameRef) => PauseButton(gameRef: gameRef),
           PauseMenu.id: (_, gameRef) => PauseMenu(gameRef: gameRef),
+          GameOverMenu.id: (_, gameRef) => GameOverMenu(gameRef: gameRef),
         },
-        game: BitSwap(),
+        // context is passed to reuse same BlocProvider.of(context)
+        // as from the initial app (for score & settings states).
+        game: BitSwap(context),
       ),
     );
   }
@@ -47,7 +53,10 @@ class GameScreen extends StatelessWidget {
 
 class BitSwap extends Forge2DGame
     with TapDetector, HasKeyboardHandlerComponents {
-  BitSwap() : super(gravity: GameConstants.gravity);
+  BitSwap(this.context) : super(gravity: GameConstants.gravity);
+
+  final BuildContext context;
+
   final Images imagesLoader = Images();
 
   late final DirtComponent dirt;
@@ -64,6 +73,8 @@ class BitSwap extends Forge2DGame
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    context.read<ScoreCubit>().resetScore();
+
     await _loadImages();
 
     final boundaries = Boundaries.walls(this);
@@ -103,7 +114,7 @@ class BitSwap extends Forge2DGame
     _score = ScoreComponent();
     return add(
       FlameBlocProvider<ScoreCubit, ScoreState>.value(
-        value: ScoreCubit()..load(),
+        value: context.read<ScoreCubit>(),
         children: [_score],
       ),
     );
@@ -120,8 +131,22 @@ class BitSwap extends Forge2DGame
     return add(obstacleSpawner);
   }
 
-  void gameOver() {
-    pauseEngine();
-    // TODO: Kill Player and display game over screen.
+  Future<void> gameOver() async {
+    overlays.remove(PauseButton.id);
+    _score.stopCounting();
+    final score = _score.bloc.state.score;
+    final highScore = _score.bloc.state.highScore;
+    if (score > highScore) _score.bloc.updateHighScore(score);
+    removeAll([_player, dirt]);
+    await add(PlayerCrashEffectComponent(_player.body.position));
+
+    await Future.delayed(
+      const Duration(milliseconds: PlayerConstants.crashEffectDuration ~/ 2),
+    );
+    overlays.add(GameOverMenu.id);
+  }
+
+  Future<void> restart() async {
+    // TODO: Restart.
   }
 }

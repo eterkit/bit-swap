@@ -11,11 +11,12 @@ class ScoreCubit extends Cubit<ScoreState> {
 
   static const String _highScoreKey = 'high_score';
 
-  void incrementScore() => emit(state.copyWith(score: state.score + 1));
+  void incrementScore(double scoreToAdd) =>
+      emit(state.copyWith(score: state.score + scoreToAdd));
 
   void resetScore() => emit(state.copyWith(score: ScoreState.initial().score));
 
-  void updateHighScore(int highScore) {
+  void updateHighScore(double highScore) {
     emit(state.copyWith(highScore: highScore));
     _store();
   }
@@ -24,13 +25,13 @@ class ScoreCubit extends Cubit<ScoreState> {
     final prefs = await SharedPreferences.getInstance();
     emit(
       state.copyWith(
-        highScore: prefs.getInt(_highScoreKey) ?? state.highScore,
+        highScore: prefs.getDouble(_highScoreKey) ?? state.highScore,
       ),
     );
   }
 
   Future<void> _store() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setInt(_highScoreKey, state.highScore);
+    prefs.setDouble(_highScoreKey, state.highScore);
   }
 }

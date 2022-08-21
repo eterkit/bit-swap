@@ -83,6 +83,16 @@ class L10n {
     );
   }
 
+  /// `Tap or press space to move character`
+  String get mainMenuPlayInstructions {
+    return Intl.message(
+      'Tap or press space to move character',
+      name: 'mainMenuPlayInstructions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settingsMenuTitle {
     return Intl.message(
@@ -128,6 +138,46 @@ class L10n {
     return Intl.message(
       'Pause',
       name: 'pauseMenuTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Game over`
+  String get gameOverMenuTitle {
+    return Intl.message(
+      'Game over',
+      name: 'gameOverMenuTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Score`
+  String get gameOverMenuScore {
+    return Intl.message(
+      'Score',
+      name: 'gameOverMenuScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High score`
+  String get gameOverMenuHighScore {
+    return Intl.message(
+      'High score',
+      name: 'gameOverMenuHighScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New high score`
+  String get gameOverMenuNewHighScore {
+    return Intl.message(
+      'New high score',
+      name: 'gameOverMenuNewHighScore',
       desc: '',
       args: [],
     );

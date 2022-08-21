@@ -20,47 +20,45 @@ class PauseMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Theme.of(context).primaryColor,
-          width: 2,
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.secondary,
+          width: 6,
         ),
       ),
-      child: AlertDialog(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        contentPadding: const EdgeInsets.all(GameMargins.margin).copyWith(
-          top: 60,
+      backgroundColor: Theme.of(context).primaryColor,
+      contentPadding: const EdgeInsets.all(GameMargins.margin).copyWith(
+        top: 60,
+      ),
+      title: Text(
+        L10n.of(context).pauseMenuTitle,
+        textAlign: TextAlign.center,
+        style: GameTextStyles.title.copyWith(
+          color: Theme.of(context).colorScheme.secondary,
         ),
-        title: Text(
-          L10n.of(context).pauseMenuTitle,
-          textAlign: TextAlign.center,
-          style: GameTextStyles.title.copyWith(
-            color: Theme.of(context).primaryColor,
+      ),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GameIconButton.image(
+            path: GameIcons.home,
+            color: Theme.of(context).colorScheme.secondary,
+            size: GameSizes.menuOverlayIconButtonSize,
+            onPressed: context.pop,
           ),
-        ),
-        content: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GameIconButton.image(
-              path: GameIcons.home,
-              color: Theme.of(context).primaryColor,
-              size: GameSizes.pauseMenuIconButtonSize,
-              onPressed: context.pop,
-            ),
-            const HorizontalSpacer(40),
-            GameIconButton.image(
-              path: GameIcons.play,
-              color: Theme.of(context).primaryColor,
-              size: GameSizes.pauseMenuIconButtonSize,
-              onPressed: () async {
-                gameRef.overlays.remove(PauseMenu.id);
-                await Future.delayed(const Duration(seconds: 1));
-                gameRef.resumeEngine();
-              },
-            ),
-          ],
-        ),
+          const HorizontalSpacer(40),
+          GameIconButton.image(
+            path: GameIcons.play,
+            color: Theme.of(context).colorScheme.secondary,
+            size: GameSizes.menuOverlayIconButtonSize,
+            onPressed: () async {
+              gameRef.overlays.remove(PauseMenu.id);
+              await Future.delayed(const Duration(seconds: 1));
+              gameRef.resumeEngine();
+            },
+          ),
+        ],
       ),
     );
   }

@@ -3,9 +3,14 @@
   "gameName": "Bit Swap",
   "mainMenuGameTitle": "Bit\nSwap",
   "mainMenuPlay": "PLAY",
+  "mainMenuPlayInstructions": "Tap or press space to move character",
   "settingsMenuTitle": "Settings",
   "settingsSound": "Sound",
   "settingsMusic": "Music",
   "settingsMenuCredits": "Credits",
-  "pauseMenuTitle": "Pause"
+  "pauseMenuTitle": "Pause",
+  "gameOverMenuTitle": "Game over",
+  "gameOverMenuScore": "Score",
+  "gameOverMenuHighScore": "High score",
+  "gameOverMenuNewHighScore": "New high score"
 }
