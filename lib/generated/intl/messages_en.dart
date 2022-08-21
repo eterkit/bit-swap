@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "creditsFonts": MessageLookupByLibrary.simpleMessage("Fonts"),
         "creditsGraphics": MessageLookupByLibrary.simpleMessage("Graphics"),
         "creditsMusic": MessageLookupByLibrary.simpleMessage("Music"),
+        "creditsSound": MessageLookupByLibrary.simpleMessage("Sound"),
         "gameName": MessageLookupByLibrary.simpleMessage("Bit Swap"),
         "gameOverMenuHighScore":
             MessageLookupByLibrary.simpleMessage("High score"),

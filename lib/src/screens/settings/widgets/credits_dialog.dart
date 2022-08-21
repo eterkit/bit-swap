@@ -56,6 +56,11 @@ class CreditsDialog extends StatelessWidget {
                   title: strings.creditsMusic,
                   entries: GameCreditsConstants.music,
                 ),
+                const VerticalSpacer(GameSpacers.space),
+                ...CreditsSectionItem.build(
+                  title: strings.settingsSound,
+                  entries: GameCreditsConstants.sound,
+                ),
               ],
             ),
           ),

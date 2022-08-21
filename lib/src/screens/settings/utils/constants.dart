@@ -18,4 +18,9 @@ abstract class GameCreditsConstants {
   static const List<String> music = [
     'Kenney Game Assets\nhttps://kenney.nl',
   ];
+
+  static const List<String> sound = [
+    'Jump\nKenney Game Assets\nhttps://kenney.nl\n',
+    'Crash\nVortichez\nhttps://freesound.org/people/Vortichez',
+  ];
 }

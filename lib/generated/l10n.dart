@@ -183,6 +183,16 @@ class L10n {
     );
   }
 
+  /// `Sound`
+  String get creditsSound {
+    return Intl.message(
+      'Sound',
+      name: 'creditsSound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Pause`
   String get pauseMenuTitle {
     return Intl.message(
