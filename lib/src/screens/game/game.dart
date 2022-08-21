@@ -1,3 +1,4 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Image;
 
@@ -11,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../configuration/configuration.dart';
 import '../../cubits/score/score_cubit.dart';
+import '../../cubits/settings/settings_cubit.dart';
 import '../../widgets/game_background.dart';
 import '../../widgets/game_loading_indicator.dart';
 import 'components/boundary.dart';
@@ -75,8 +77,13 @@ class BitSwap extends Forge2DGame
   Future<void> onLoad() async {
     await super.onLoad();
     context.read<ScoreCubit>().resetScore();
+    final settings = context.read<SettingsCubit>().state;
 
     pauseEngine();
+
+    if (settings.isSoundOn && settings.isMusicOn) {
+      FlameAudio.bgm.play('music/music.mp3', volume: 0.5);
+    }
 
     await _loadImages();
 
@@ -91,6 +98,12 @@ class BitSwap extends Forge2DGame
     await _initializeObstacles();
 
     resumeEngine();
+  }
+
+  @override
+  void onRemove() {
+    super.onRemove();
+    FlameAudio.bgm.stop();
   }
 
   Future<void> _loadImages() async {

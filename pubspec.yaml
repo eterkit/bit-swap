@@ -21,6 +21,7 @@ dependencies:
   go_router: ^4.2.8
   flame: ^1.3.0
   flame_forge2d: ^0.12.2
+  flame_audio: ^1.3.0
   flame_bloc: ^1.7.0
   flutter_bloc: ^8.1.1
   intl: ^0.17.0
@@ -40,7 +41,8 @@ flutter:
   assets:
     - assets/images/
     - assets/images/icons/
-    - assets/audio/
+    - assets/audio/music/
+    - assets/audio/sfx/
 
   fonts:
     - family: ThirteenPixel
