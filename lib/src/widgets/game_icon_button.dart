@@ -38,8 +38,21 @@ class GameIconButton extends StatelessWidget {
 
   Widget _buildIcon() {
     final path = this.path;
-    if (path != null) return Image.asset(path, color: color);
+    if (path != null) {
+      return Image.asset(
+        path,
+        color: color,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        filterQuality: FilterQuality.none,
+      );
+    }
 
-    return Icon(iconData, color: color, size: size);
+    return Icon(
+      iconData,
+      color: color,
+      size: size,
+    );
   }
 }

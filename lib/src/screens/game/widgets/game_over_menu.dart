@@ -54,7 +54,7 @@ class GameOverMenu extends StatelessWidget {
               ),
               const HorizontalSpacer(40),
               GameIconButton.image(
-                path: GameIcons.play,
+                path: GameIcons.replay,
                 color: Theme.of(context).colorScheme.secondary,
                 size: GameSizes.menuOverlayIconButtonSize,
                 onPressed: () async {

@@ -26,6 +26,8 @@ class SettingsOptionWidget extends StatelessWidget {
             iconPath,
             width: GameSizes.settingsOptionIconSize,
             height: GameSizes.settingsOptionIconSize,
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.none,
             color: GameColors.charcoal,
           ),
           const HorizontalSpacer(GameSpacers.small),
