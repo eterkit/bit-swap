@@ -19,6 +19,13 @@ class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
   late final SpriteComponent _obstacleSpriteComponent;
 
   @override
+  Paint get paint => super.paint
+    ..colorFilter = const ColorFilter.mode(
+      GameColors.charcoal,
+      BlendMode.srcATop,
+    );
+
+  @override
   void beginContact(Object other, Contact contact) {
     super.beginContact(other, contact);
     if (other is PlayerComponent) {
@@ -30,18 +37,19 @@ class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
   Future<void> onLoad() async {
     await super.onLoad();
     _anchor = initialPosition.x >= gameRef.size.x / 2
-        ? Anchor.centerRight
-        : Anchor.centerLeft;
+        ? Anchor.topRight
+        : Anchor.topLeft;
+
+    final isOnLeft = _anchor == Anchor.topLeft;
 
     _obstacleSpriteComponent = SpriteComponent.fromImage(
       RandomObstacleImage.create(gameRef),
       size: _size,
-      position: Vector2(0, 0),
-      paint: super.paint
-        ..colorFilter = const ColorFilter.mode(
-          GameColors.charcoal,
-          BlendMode.srcATop,
-        ),
+      // we have to flip a sprite if it's on the right side of the screen.
+      scale: Vector2(isOnLeft ? 1 : -1, 1),
+      // also position must be adjusted.
+      position: Vector2(isOnLeft ? 0 : -_size.x, 0),
+      paint: paint,
       anchor: _anchor,
     );
     await add(_obstacleSpriteComponent);
@@ -52,8 +60,8 @@ class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
 
   @override
   Body createBody() {
-    _size = Vector2(gameRef.size.x / 2, 3);
-    final shape = PolygonShape()..setAsBoxXY(_size.x, _size.y / 2);
+    _size = Vector2(gameRef.size.x / 2, 4);
+    final shape = PolygonShape()..setAsBoxXY(_size.x * 0.95, _size.y / 4);
 
     final fixtureDefinition = FixtureDef(
       shape,
