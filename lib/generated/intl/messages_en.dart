@@ -23,8 +23,16 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "gameName": MessageLookupByLibrary.simpleMessage("Bit Swap"),
+        "gameOverMenuHighScore":
+            MessageLookupByLibrary.simpleMessage("High score"),
+        "gameOverMenuNewHighScore":
+            MessageLookupByLibrary.simpleMessage("New high score"),
+        "gameOverMenuScore": MessageLookupByLibrary.simpleMessage("Score"),
+        "gameOverMenuTitle": MessageLookupByLibrary.simpleMessage("Game over"),
         "mainMenuGameTitle": MessageLookupByLibrary.simpleMessage("Bit\nSwap"),
         "mainMenuPlay": MessageLookupByLibrary.simpleMessage("PLAY"),
+        "mainMenuPlayInstructions": MessageLookupByLibrary.simpleMessage(
+            "Tap or press space to move character"),
         "pauseMenuTitle": MessageLookupByLibrary.simpleMessage("Pause"),
         "settingsMenuCredits": MessageLookupByLibrary.simpleMessage("Credits"),
         "settingsMenuTitle": MessageLookupByLibrary.simpleMessage("Settings"),

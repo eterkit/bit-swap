@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'generated/l10n.dart';
 import 'src/configuration/configuration.dart';
+import 'src/cubits/score/score_cubit.dart';
 import 'src/cubits/settings/settings_cubit.dart';
 import 'utils/game_router.dart';
 
@@ -17,8 +18,15 @@ class GameApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SettingsCubit>.value(
-      value: SettingsCubit()..load(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SettingsCubit>(
+          create: (context) => SettingsCubit()..load(),
+        ),
+        BlocProvider<ScoreCubit>(
+          create: (context) => ScoreCubit()..load(),
+        ),
+      ],
       child: MaterialApp.router(
         onGenerateTitle: (context) => L10n.of(context).gameName,
         debugShowCheckedModeBanner: false,

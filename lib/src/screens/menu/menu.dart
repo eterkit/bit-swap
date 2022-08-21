@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide Title;
 
 import 'package:go_router/go_router.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../utils/game_router.dart';
 import '../../configuration/configuration.dart';
 import '../../widgets/game_app_bar.dart';
@@ -30,12 +31,18 @@ class MenuScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(GameMargins.margin),
           child: Column(
-            children: const [
-              VerticalSpacer(60),
-              Center(child: Title()),
-              Spacer(),
-              PlayButton(),
-              VerticalSpacer(120),
+            children: [
+              const VerticalSpacer(60),
+              const Center(child: Title()),
+              const Spacer(),
+              const PlayButton(),
+              const VerticalSpacer(20),
+              Text(
+                L10n.of(context).mainMenuPlayInstructions,
+                style: GameTextStyles.regular15,
+                textAlign: TextAlign.center,
+              ),
+              const VerticalSpacer(120),
             ],
           ),
         ),

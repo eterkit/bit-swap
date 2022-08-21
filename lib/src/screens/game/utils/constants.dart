@@ -3,6 +3,7 @@ import 'package:flame/game.dart';
 abstract class GameConstants {
   static final Vector2 gameResolution = Vector2(400, 800);
   static final Vector2 gravity = Vector2(0, 150);
+  static const double scoreIncrement = 0.5;
 }
 
 abstract class PlayerConstants {
@@ -10,6 +11,9 @@ abstract class PlayerConstants {
   static final Vector2 spriteSize = Vector2(5, 5);
   static const double bodyRadius = 2.4;
   static final Vector2 initialPosition = Vector2(0, 20);
+
+  /// In milliseconds.
+  static const int crashEffectDuration = 800;
 }
 
 abstract class ObstacleConstants {

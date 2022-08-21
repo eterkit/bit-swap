@@ -3,6 +3,7 @@ import 'package:flame_bloc/flame_bloc.dart';
 
 import '../../../configuration/configuration.dart';
 import '../../../cubits/score/score_cubit.dart';
+import '../utils/constants.dart';
 
 class ScoreComponent extends TextComponent
     with HasGameRef, FlameBlocListenable<ScoreCubit, ScoreState> {
@@ -17,6 +18,8 @@ class ScoreComponent extends TextComponent
           ),
         );
 
+  bool _canCount = true;
+
   @override
   Future<void>? onLoad() async {
     await super.onLoad();
@@ -25,6 +28,19 @@ class ScoreComponent extends TextComponent
 
   @override
   void onNewState(ScoreState state) {
-    text = '${state.score}';
+    text = state.score.toStringAsFixed(3);
   }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if (!_canCount) return;
+    _updateScore(dt);
+  }
+
+  void _updateScore(double dt) {
+    bloc.incrementScore(GameConstants.scoreIncrement * dt);
+  }
+
+  void stopCounting() => _canCount = false;
 }

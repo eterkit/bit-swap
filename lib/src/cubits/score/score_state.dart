@@ -12,15 +12,15 @@ class ScoreState extends Equatable {
         highScore: 0,
       );
 
-  final int score;
-  final int highScore;
+  final double score;
+  final double highScore;
 
   @override
   List<Object> get props => [score, highScore];
 
   ScoreState copyWith({
-    int? score,
-    int? highScore,
+    double? score,
+    double? highScore,
   }) =>
       ScoreState(
         score: score ?? this.score,
