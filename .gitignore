@@ -33,6 +33,8 @@ lib/generated_plugin_registrant.dart
 *.g.dart
 *.mocks.dart
 *.gr.dart
+# Appwrite API configuration
+server/bit_swap_api/lib/src/appwrite/api_config.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar
