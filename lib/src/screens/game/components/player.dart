@@ -64,7 +64,7 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
       userData: this,
       position: PlayerConstants.initialPosition,
       type: BodyType.dynamic,
-      gravityScale: Vector2.zero(),
+      gravityOverride: Vector2.zero(),
     );
 
     return world.createBody(bodyDef)..createFixture(fixtureDefinition);

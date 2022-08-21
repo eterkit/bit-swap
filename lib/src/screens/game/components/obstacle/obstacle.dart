@@ -7,7 +7,6 @@ import '../../../../configuration/configuration.dart';
 import '../../game.dart';
 import '../../utils/constants.dart';
 import '../player.dart';
-import 'utils/obstacle_spawner.dart';
 import 'utils/random_obstacle_image.dart';
 
 class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
@@ -22,9 +21,7 @@ class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
   @override
   void beginContact(Object other, Contact contact) {
     super.beginContact(other, contact);
-    if (other is ObstacleSpawner) {
-      gameRef.obstacleSpawner.spawnObstacle(this);
-    } else if (other is PlayerComponent) {
+    if (other is PlayerComponent) {
       gameRef.gameOver();
     }
   }
@@ -69,10 +66,15 @@ class ObstacleComponent extends BodyComponent<BitSwap> with ContactCallbacks {
       type: BodyType.dynamic,
       gravityOverride: Vector2.zero(),
       // Move obstacle up with constant speed.
-      // TODO: movement speed should be controlled with game state.
       linearVelocity: Vector2(0, -ObstacleConstants.movementSpeed),
     );
 
     return world.createBody(bodyDef)..createFixture(fixtureDefinition);
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if (body.position.y < -_size.y) removeFromParent();
   }
 }

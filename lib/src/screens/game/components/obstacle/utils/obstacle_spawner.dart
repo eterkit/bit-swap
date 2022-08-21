@@ -1,50 +1,32 @@
-import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:flame/components.dart';
 
-import '../../../game.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/random_generator.dart';
 import '../obstacle.dart';
 
-class ObstacleSpawner extends BodyComponent<BitSwap> with ContactCallbacks {
-  late final List<ObstacleComponent> obstacles;
+class ObstacleSpawner extends TimerComponent with HasGameRef {
+  ObstacleSpawner(this.rate) : super(period: 0.01, repeat: true);
+
+  // rate * 10 = number of milliseconds between spawns.
+  // rate = 50 means one spawn every half second.
+  int rate;
+
+  // 1 tick is 50ms.
+  int _ticks = 0;
 
   static const double _initialYPosition = ObstacleConstants.initialYPosition;
 
   @override
-  bool get renderBody => true;
-
-  @override
-  Future<void> onLoad() async {
-    await super.onLoad();
-    final screenOneThird = gameRef.size.y / 3;
-    final obstacles = [
-      ObstacleComponent(_getRandomPosition()),
-      ObstacleComponent(
-        _getRandomPosition(positionY: _initialYPosition + screenOneThird),
-      ),
-      ObstacleComponent(
-        _getRandomPosition(positionY: _initialYPosition + (screenOneThird * 2)),
-      ),
-    ];
-    addAll(obstacles);
-  }
-
-  @override
-  Body createBody() {
-    final shape = PolygonShape()..setAsBoxXY(gameRef.size.x, 0);
-
-    final fixtureDefinition = FixtureDef(shape, userData: this);
-    final bodyDef = BodyDef(
-      userData: this,
-      position: Vector2.zero(),
-    );
-
-    return world.createBody(bodyDef)..createFixture(fixtureDefinition);
-  }
-
-  void spawnObstacle(ObstacleComponent obstacleToRemove) {
-    remove(obstacleToRemove);
+  void onTick() {
+    _ticks++;
+    if (_ticks % rate != 0) return;
     add(ObstacleComponent(_getRandomPosition()));
+    _ticks = 0;
+  }
+
+  @override
+  Future<void>? onLoad() async {
+    await super.onLoad();
   }
 
   Vector2 _getRandomPosition({double? positionY}) {
