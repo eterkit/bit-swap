@@ -2,7 +2,6 @@ import 'package:flame/game.dart';
 
 abstract class GameConstants {
   static final Vector2 gameResolution = Vector2(400, 800);
-  static final Vector2 gravity = Vector2(0, 150);
   static const double scoreIncrement = 0.5;
 }
 
@@ -20,4 +19,5 @@ abstract class ObstacleConstants {
   static const double movementSpeed = 50;
   static const double initialYPosition = 85;
   static const int maxYPositionOffset = 30;
+  static const double obstacleSpawnProgress = 2; // in seconds
 }

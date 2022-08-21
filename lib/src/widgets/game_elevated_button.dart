@@ -27,6 +27,7 @@ class GameElevatedButton extends StatelessWidget {
       width: width,
       height: height,
       child: ElevatedButton(
+        autofocus: true,
         onPressed: onPressed,
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
