@@ -69,6 +69,7 @@ class BitSwap extends Forge2DGame
   late final ScoreComponent _score;
 
   late final ObstacleSpawner obstacleSpawner;
+  late final bool _isSoundOn;
 
   @override
   void onTapDown(TapDownInfo info) => _player.jump();
@@ -78,10 +79,11 @@ class BitSwap extends Forge2DGame
     await super.onLoad();
     context.read<ScoreCubit>().resetScore();
     final settings = context.read<SettingsCubit>().state;
+    _isSoundOn = settings.isSoundOn;
 
     pauseEngine();
 
-    if (settings.isSoundOn && settings.isMusicOn) {
+    if (_isSoundOn && settings.isMusicOn) {
       FlameAudio.bgm.play(GameAudio.music, volume: 0.5);
     }
 
@@ -169,5 +171,9 @@ class BitSwap extends Forge2DGame
       const Duration(milliseconds: PlayerConstants.crashEffectDuration ~/ 2),
     );
     overlays.add(GameOverMenu.id);
+  }
+
+  void playEffect(String path) {
+    if (_isSoundOn) FlameAudio.play(path);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
 import '../../../configuration/configuration.dart';
@@ -103,6 +104,7 @@ class PlayerComponent extends BodyComponent<BitSwap> with KeyboardHandler {
     _spriteComponent.current = PlayerState.jump;
 
     gameRef.dirt.position = DirtPosition.none;
+    gameRef.playEffect(GameAudio.jump);
   }
 
   void _checkPosition() {
