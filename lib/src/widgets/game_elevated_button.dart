@@ -40,7 +40,7 @@ class GameElevatedButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GameTextStyles.regular15.copyWith(color: labelColor),
+          style: GameTextStyles.regular28.copyWith(color: labelColor),
         ),
       ),
     );

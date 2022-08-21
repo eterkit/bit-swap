@@ -1,6 +1,9 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -135,6 +138,46 @@ class L10n {
     return Intl.message(
       'Credits',
       name: 'settingsMenuCredits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authors`
+  String get creditsAuthors {
+    return Intl.message(
+      'Authors',
+      name: 'creditsAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Graphics`
+  String get creditsGraphics {
+    return Intl.message(
+      'Graphics',
+      name: 'creditsGraphics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fonts`
+  String get creditsFonts {
+    return Intl.message(
+      'Fonts',
+      name: 'creditsFonts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Music`
+  String get creditsMusic {
+    return Intl.message(
+      'Music',
+      name: 'creditsMusic',
       desc: '',
       args: [],
     );

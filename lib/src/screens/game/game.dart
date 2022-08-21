@@ -1,4 +1,3 @@
-import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Image;
 
@@ -6,6 +5,7 @@ import 'package:flame/cache.dart';
 import 'package:flame/game.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame/input.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flame_forge2d/flame_forge2d.dart' show Forge2DGame;
 import 'package:flutter_bloc/flutter_bloc.dart';
