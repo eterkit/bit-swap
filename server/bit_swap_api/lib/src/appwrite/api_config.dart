@@ -1,22 +1,53 @@
+import 'dart:convert';
+
+import 'package:yaml/yaml.dart';
+
 // A wrapper class around Appwrite API configuration.
 // Hints > Location > In > Appwrite > Console
 class ApiConfig {
+  ApiConfig({
+    required this.endpoint,
+    required this.projectId,
+    required this.scoreProcessorId,
+    required this.databaseId,
+    required this.leaderboardsId,
+    required this.scoresId,
+  });
+
+  static late final ApiConfig instance;
+
+  static void initialize(String yamlString) {
+    instance = ApiConfig.fromYaml(yamlString);
+  }
+
   // Endpoint of the Appwrite application API.
   // > Home > Settings > Overview
-  static const String endpoint = '<api-endpoint>';
+  final String endpoint;
   // ID of the game project.
   // > Home > Settings > Overview
-  static const String projectId = '<game-project-id>';
+  final String projectId;
   // ID of the score processor function.
   // > Functions > [function-name] Settings > Overview
-  static const String scoreProcessorId = '<score-processor-function-id>';
+  final String scoreProcessorId;
   // ID of the game database.
   // > Database > [database-name] > Settings
-  static const String databaseId = '<game-database-id>';
+  final String databaseId;
   // ID of the leaderboards collection.
   // > Database > [database-name] > [collection-name] > Settings
-  static const String leaderboardsId = '<leaderboards-collection-id>';
+  final String leaderboardsId;
   // ID of the scores collection.
   // > Database > [database-name] > [collection-name] > Settings
-  static const String scoresId = '<scores-collection-id>';
+  final String scoresId;
+
+  factory ApiConfig.fromYaml(String yamlString) =>
+      ApiConfig.fromJson(jsonDecode(jsonEncode(loadYaml(yamlString))));
+
+  factory ApiConfig.fromJson(Map<String, dynamic> json) => ApiConfig(
+        endpoint: json['endpoint'],
+        projectId: json['project_id'],
+        scoreProcessorId: json['score_processor_id'],
+        databaseId: json['database_id'],
+        leaderboardsId: json['leaderboards_id'],
+        scoresId: json['scores_id'],
+      );
 }
